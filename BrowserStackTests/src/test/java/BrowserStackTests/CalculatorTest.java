@@ -1,3 +1,5 @@
+package BrowserStackTests;
+
 import java.net.URL;
 
 import org.openqa.selenium.By;
@@ -9,8 +11,8 @@ import io.appium.java_client.MobileElement;
 public class CalculatorTest {
 	static AppiumDriver<MobileElement> driver;
 	
-	String userName = System.getenv("BROWSERSTACK_USERNAME");
-	String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
+	static String userName = System.getenv("BROWSERSTACK_USERNAME");
+	static String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
 	static String browserstackLocal = System.getenv("BROWSERSTACK_LOCAL");
 	static String buildName = System.getenv("BROWSERSTACK_BUILD_NAME");
 	static String browserstackLocalIdentifier = System.getenv("BROWSERSTACK_LOCAL_IDENTIFIER");
@@ -49,8 +51,9 @@ public class CalculatorTest {
 		cap.setCapability("app", app);
 	    cap.setCapability("device", "Samsung Galaxy S8");
 	    cap.setCapability("build", buildName);
-	    cap.setCapability("browserstack.local", browserstackLocal);
-	    cap.setCapability("browserstack.localIdentifier", browserstackLocalIdentifier);
+	    cap.setCapability("os_version", "7.0");
+	    cap.setCapability("project", "Ran From Jenkins");
+	    cap.setCapability("browserstack.debug", "true");
 	    
 	    driver = new AppiumDriver<MobileElement>(new URL("https://mikaelatang_0lNFc5:8e64WoZs7XyvBuJGfv11@hub-cloud.browserstack.com/wd/hub"), cap);
 	    System.out.println("Application started");
