@@ -13,10 +13,7 @@ public class CalculatorTest {
 	
 	static String userName = System.getenv("BROWSERSTACK_USERNAME");
 	static String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
-	static String browserstackLocal = System.getenv("BROWSERSTACK_LOCAL");
 	static String buildName = System.getenv("BROWSERSTACK_BUILD_NAME");
-	static String browserstackLocalIdentifier = System.getenv("BROWSERSTACK_LOCAL_IDENTIFIER");
-	static String app = System.getenv("BROWSERSTACK_APP_ID");
 
 	public static void main(String[] args) {
 		try {
@@ -48,14 +45,14 @@ public class CalculatorTest {
 	public static void openCalculator() throws Exception {
 		DesiredCapabilities cap = new DesiredCapabilities();
 		
-		cap.setCapability("app", app);
+		cap.setCapability("app", "bs://d5c60badda837ff9e00e4037fa0f33fe1df98dc9");
 	    cap.setCapability("device", "Samsung Galaxy S8");
 	    cap.setCapability("build", buildName);
 	    cap.setCapability("os_version", "7.0");
 	    cap.setCapability("project", "Ran From Jenkins");
 	    cap.setCapability("browserstack.debug", "true");
 	    
-	    driver = new AppiumDriver<MobileElement>(new URL("https://mikaelatang_0lNFc5:8e64WoZs7XyvBuJGfv11@hub-cloud.browserstack.com/wd/hub"), cap);
+	    driver = new AppiumDriver<MobileElement>(new URL("https://" + userName + ":" + accessKey + "@hub-cloud.browserstack.com/wd/hub"), cap);
 	    System.out.println("Application started");
 	}
 	
